@@ -54,7 +54,7 @@ export default function ServicesSection() {
         <div
           className="w-full h-full"
           style={{
-            backgroundImage: `radial-gradient(circle, oklch(0.65 0.25 142) 1px, transparent 1px)`,
+            backgroundImage: `radial-gradient(circle, hsl(var(--primary)) 1px, transparent 1px)`,
             backgroundSize: '30px 30px',
           }}
         />

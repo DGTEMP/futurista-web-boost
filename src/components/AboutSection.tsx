@@ -34,7 +34,7 @@ export default function AboutSection() {
         <div
           className="w-full h-full"
           style={{
-            backgroundImage: `radial-gradient(circle, oklch(0.60 0.25 270) 1px, transparent 1px)`,
+            backgroundImage: `radial-gradient(circle, hsl(var(--chart-3)) 1px, transparent 1px)`,
             backgroundSize: '50px 50px',
           }}
         />

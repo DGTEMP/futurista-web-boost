@@ -56,7 +56,7 @@ export default function TestimonialsSection() {
         <div
           className="w-full h-full"
           style={{
-            backgroundImage: `radial-gradient(circle, oklch(0.55 0.25 190) 1px, transparent 1px)`,
+            backgroundImage: `radial-gradient(circle, hsl(var(--primary)) 1px, transparent 1px)`,
             backgroundSize: '40px 40px',
           }}
         />
