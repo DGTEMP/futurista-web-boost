@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import ThemeToggle from './ThemeToggle';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,8 +42,8 @@ export default function Navigation() {
       <div className="container">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#home" className="flex items-center space-x-2" onClick={(e) => scrollToSection(e, '#home')}>
-            <div className="text-3xl font-bold text-gradient">R9</div>
+          <a href="#home" className="flex items-center" onClick={(e) => scrollToSection(e, '#home')}>
+            <img src="/logo-r9.png" alt="R9 Logo" className="h-12 w-auto" />
           </a>
 
           {/* Desktop Navigation */}
@@ -57,19 +58,23 @@ export default function Navigation() {
                 {link.label}
               </a>
             ))}
+            <ThemeToggle />
             <Button asChild className="glow-lime">
               <a href="#generator">Criar Proposta</a>
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-foreground"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              className="text-foreground"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
