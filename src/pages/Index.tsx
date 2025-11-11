@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
@@ -11,8 +12,17 @@ import FAQSection from '@/components/FAQSection';
 import ContactSection from '@/components/ContactSection';
 import ProposalGenerator from '@/components/ProposalGenerator';
 import Footer from '@/components/Footer';
+import SplashScreen from '@/components/SplashScreen';
+import InactivityPopup from '@/components/InactivityPopup';
+import RapidScrollPopup from '@/components/RapidScrollPopup';
 
 export default function Index() {
+  const [showSplash, setShowSplash] = useState(true);
+
+  if (showSplash) {
+    return <SplashScreen onComplete={() => setShowSplash(false)} />;
+  }
+
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -28,6 +38,8 @@ export default function Index() {
       <ContactSection />
       <ProposalGenerator />
       <Footer />
+      <InactivityPopup />
+      <RapidScrollPopup />
     </div>
   );
 }
