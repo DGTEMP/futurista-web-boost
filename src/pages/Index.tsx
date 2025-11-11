@@ -16,6 +16,8 @@ import SplashScreen from '@/components/SplashScreen';
 import InactivityPopup from '@/components/InactivityPopup';
 import RapidScrollPopup from '@/components/RapidScrollPopup';
 import DynamicBlocks from '@/components/DynamicBlocks';
+import InteractiveParticles from '@/components/InteractiveParticles';
+import PricingSection from '@/components/PricingSection';
 import { useProtection } from '@/hooks/useProtection';
 
 export default function Index() {
@@ -29,6 +31,7 @@ export default function Index() {
   return (
     <div className="min-h-screen">
       <DynamicBlocks />
+      <InteractiveParticles />
       <Navigation />
       <HeroSection />
       <AboutSection />
@@ -38,6 +41,7 @@ export default function Index() {
       <CTASection />
       <ProcessSection />
       <TestimonialsSection />
+      <PricingSection />
       <FAQSection />
       <ContactSection />
       <ProposalGenerator />

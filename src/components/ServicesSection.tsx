@@ -1,7 +1,9 @@
 import { Video, Code, Palette, Megaphone, Smartphone, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function ServicesSection() {
+  useScrollAnimation();
   const services = [
     {
       icon: Video,
@@ -62,7 +64,7 @@ export default function ServicesSection() {
 
       <div className="container relative z-10">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <div className="max-w-3xl mx-auto text-center mb-16" data-aos="fade-up">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             Nossos <span className="text-gradient">Serviços</span>
           </h2>
@@ -113,7 +115,7 @@ export default function ServicesSection() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-16 text-center">
+        <div className="mt-16 text-center" data-aos="fade-up">
           <p className="text-lg text-muted-foreground mb-6">
             Não encontrou o que procura? Entre em contato para soluções personalizadas.
           </p>
