@@ -15,9 +15,12 @@ import Footer from '@/components/Footer';
 import SplashScreen from '@/components/SplashScreen';
 import InactivityPopup from '@/components/InactivityPopup';
 import RapidScrollPopup from '@/components/RapidScrollPopup';
+import DynamicBlocks from '@/components/DynamicBlocks';
+import { useProtection } from '@/hooks/useProtection';
 
 export default function Index() {
   const [showSplash, setShowSplash] = useState(true);
+  useProtection();
 
   if (showSplash) {
     return <SplashScreen onComplete={() => setShowSplash(false)} />;
@@ -25,6 +28,7 @@ export default function Index() {
 
   return (
     <div className="min-h-screen">
+      <DynamicBlocks />
       <Navigation />
       <HeroSection />
       <AboutSection />
