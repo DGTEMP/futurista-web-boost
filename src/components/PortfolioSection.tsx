@@ -53,13 +53,13 @@ export default function PortfolioSection() {
     <section id="portfolio" className="py-24 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-chart-3/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/3 left-1/4 w-96 h-96 bg-primary/30 rounded-full blur-3xl" />
+        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-chart-3/30 rounded-full blur-3xl animate-pulse-slow" />
+        <div className="absolute bottom-1/3 left-1/4 w-96 h-96 bg-primary/30 rounded-full blur-3xl animate-pulse-slow" />
       </div>
 
       <div className="container relative z-10">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <div className="max-w-3xl mx-auto text-center mb-16" data-aos="fade-up">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             Nosso <span className="text-gradient">Portfólio</span>
           </h2>
@@ -68,44 +68,68 @@ export default function PortfolioSection() {
           </p>
         </div>
 
-        {/* Portfolio Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Portfolio Grid - Bento Style */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group glass rounded-xl overflow-hidden hover:glow-lime transition-all duration-300"
-              data-aos="zoom-in"
-              data-aos-delay={index * 100}
+              className={`group glass-strong rounded-2xl overflow-hidden hover-lift transition-all duration-500 ${
+                index === 0 || index === 5 ? 'md:col-span-2 md:row-span-2' : ''
+              }`}
+              data-aos="fade-up"
+              data-aos-delay={index * 50}
             >
-              {/* Project Image */}
-              <div className="relative h-48 overflow-hidden">
-                <div
-                  className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                  style={{ backgroundImage: `url(${project.image})` }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
+              {/* Project Image with Gradient Overlay */}
+              <div className={`relative overflow-hidden ${
+                index === 0 || index === 5 ? 'h-[400px]' : 'h-[280px]'
+              }`}>
+                {/* Gradient Background instead of image */}
+                <div className={`absolute inset-0 transition-all duration-700 group-hover:scale-110 ${
+                  index % 6 === 0 ? 'bg-gradient-to-br from-primary via-chart-2 to-chart-3' :
+                  index % 6 === 1 ? 'bg-gradient-to-br from-chart-1 via-primary to-chart-4' :
+                  index % 6 === 2 ? 'bg-gradient-to-br from-chart-2 via-chart-3 to-primary' :
+                  index % 6 === 3 ? 'bg-gradient-to-br from-chart-4 via-primary to-chart-1' :
+                  index % 6 === 4 ? 'bg-gradient-to-br from-primary via-chart-4 to-chart-2' :
+                  'bg-gradient-to-br from-chart-3 via-chart-1 to-primary'
+                } opacity-80 group-hover:opacity-100`} />
                 
-                {/* Overlay on Hover */}
-                <div className="absolute inset-0 bg-primary/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <Button variant="secondary" size="sm">
-                    <ExternalLink className="w-4 h-4 mr-2" />
+                {/* Overlay Pattern */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                {/* Content Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-500" />
+                
+                {/* Hover Button */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-90 group-hover:scale-100">
+                  <Button variant="secondary" size="lg" className="shadow-2xl">
+                    <ExternalLink className="w-5 h-5 mr-2" />
                     Ver Projeto
                   </Button>
+                </div>
+
+                {/* Category Badge */}
+                <div className="absolute top-4 left-4 px-4 py-2 rounded-full bg-background/50 backdrop-blur-md border border-primary/20">
+                  <span className="text-xs font-semibold text-primary">{project.category}</span>
                 </div>
               </div>
 
               {/* Project Info */}
-              <div className="p-6">
-                <div className="text-sm text-primary font-medium mb-2">{project.category}</div>
-                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4">{project.description}</p>
+              <div className={`p-6 ${index === 0 || index === 5 ? 'lg:p-8' : ''}`}>
+                <h3 className={`font-bold mb-3 group-hover:text-primary transition-colors ${
+                  index === 0 || index === 5 ? 'text-2xl' : 'text-xl'
+                }`}>
+                  {project.title}
+                </h3>
+                <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                  {project.description}
+                </p>
                 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag, idx) => (
                     <span
                       key={idx}
-                      className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary"
+                      className="text-xs px-3 py-1.5 rounded-full glass border border-primary/20 text-foreground font-medium hover:border-primary/40 transition-colors"
                     >
                       {tag}
                     </span>
@@ -117,11 +141,11 @@ export default function PortfolioSection() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-16 text-center">
+        <div className="mt-16 text-center" data-aos="fade-up" data-aos-delay="400">
           <p className="text-lg text-muted-foreground mb-6">
             Quer ver mais projetos ou discutir o seu?
           </p>
-          <Button size="lg" className="glow-lime" asChild>
+          <Button size="lg" className="glow-lime text-lg px-8" asChild>
             <a href="#contact">Vamos Conversar</a>
           </Button>
         </div>
