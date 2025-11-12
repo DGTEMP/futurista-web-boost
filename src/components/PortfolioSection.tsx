@@ -1,7 +1,9 @@
 import { ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function PortfolioSection() {
+  useScrollAnimation();
   const projects = [
     {
       title: 'Campanha Digital - Tech Startup',
