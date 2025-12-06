@@ -10,7 +10,7 @@ import ProcessSection from '@/components/ProcessSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import FAQSection from '@/components/FAQSection';
 import ContactSection from '@/components/ContactSection';
-import ProposalGenerator from '@/components/ProposalGenerator';
+
 import Footer from '@/components/Footer';
 import SplashScreen from '@/components/SplashScreen';
 import InactivityPopup from '@/components/InactivityPopup';
@@ -44,7 +44,7 @@ export default function Index() {
       <PricingSection />
       <FAQSection />
       <ContactSection />
-      <ProposalGenerator />
+      
       <Footer />
       <InactivityPopup />
       <RapidScrollPopup />
